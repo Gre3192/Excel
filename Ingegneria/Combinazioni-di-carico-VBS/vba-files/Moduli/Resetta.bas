@@ -12,7 +12,7 @@ Sub resetta_valori()
     If button_clicked = "Resetta tutto" Then
 
         Dim buttonInvolved() As Variant
-        buttonInvolved = Array("Resetta G1", "Resetta G2", "Resetta Qk", "Resetta P", "Resetta SLU", "Resetta SLE RARA", "Resetta SLE FREQUENTE", "Resetta SLE Q.P.")        
+        buttonInvolved = Array("Resetta G1", "Resetta G2", "Resetta Qk", "Resetta P", "Resetta SLU", "Resetta SLE RARA", "Resetta SLE FREQUENTE", "Resetta SLE Q.P.")
         
         For Each ResetButton In buttonInvolved
             reset ResetButton

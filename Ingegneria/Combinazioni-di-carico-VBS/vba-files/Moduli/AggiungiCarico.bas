@@ -14,7 +14,7 @@ Sub aggiungi_carico()
     Dim isDash As Boolean
     Dim incrRow As Integer, incrCol As Integer
     Dim current_cell As Range, next_cell As Range
-    Dim start_row As Long, start_col As Long, tot as Long
+    Dim start_row As Long, start_col As Long, tot As Long
 
     start_row = ws.Range(range_pointer(getBlockName(button_clicked))).Row
     start_col = ws.Range(range_pointer(getBlockName(button_clicked))).Column
@@ -80,7 +80,7 @@ Sub aggiungi_carico()
     '
     '-- COLONNA STATO ------------------------------------------------------------------------------------------
         If button_clicked = "Aggiungi Qk" Then
-            Set next_cell = ws.Range(ws.Cells(start_row + 3 + tot + incrRow, start_col + 14), ws.Cells(start_row + 3 + tot + incrRow, start_col + 15))      
+            Set next_cell = ws.Range(ws.Cells(start_row + 3 + tot + incrRow, start_col + 14), ws.Cells(start_row + 3 + tot + incrRow, start_col + 15))
         Else
             Set next_cell = ws.Range(ws.Cells(start_row + 3 + tot + incrRow, start_col + 9), ws.Cells(start_row + 3 + tot + incrRow, start_col + 10))
         End If

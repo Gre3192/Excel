@@ -1,7 +1,7 @@
 Attribute VB_Name = "Funzioni"
 'namespace=vba-files\Funzioni
 
-Function range_pointer(ByVal str As String) As String   
+Function range_pointer(ByVal str As String) As String
 
     Dim start_line As Integer
     Dim start_col As String, last_col As String
@@ -124,9 +124,9 @@ End Function
 '================================================================================================================================
 Function getGamma(ByVal norma As String, ByVal stateLimit As String, ByVal load_type As String, ByVal value_condition As String, ByVal value_analysis As String) As Double
 
-    Dim gamma as Double
+    Dim gamma As Double
     
-    if norma = "NTC08" then
+    If norma = "NTC08" Then
 
         If stateLimit <> "SLU" Then
 
@@ -136,9 +136,9 @@ Function getGamma(ByVal norma As String, ByVal stateLimit As String, ByVal load_
     
             If value_analysis = "EQU" Then
                 gamma = IIf(value_condition = "Favorevole", 0.9, 1.1)
-            Elseif value_analysis = "A1 (STR)" Then
+            ElseIf value_analysis = "A1 (STR)" Then
                 gamma = IIf(value_condition = "Favorevole", 1, 1.3)
-            Elseif value_analysis = "A2" Then
+            ElseIf value_analysis = "A2" Then
                 gamma = IIf(value_condition = "Favorevole", 1, 1)
             End If
     
@@ -146,9 +146,9 @@ Function getGamma(ByVal norma As String, ByVal stateLimit As String, ByVal load_
     
             If value_analysis = "EQU" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.5)
-            Elseif value_analysis = "A1 (STR)" Then
+            ElseIf value_analysis = "A1 (STR)" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.5)
-            Elseif value_analysis = "A2" Then
+            ElseIf value_analysis = "A2" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.3)
             End If
     
@@ -156,9 +156,9 @@ Function getGamma(ByVal norma As String, ByVal stateLimit As String, ByVal load_
     
             If value_analysis = "EQU" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.5)
-            Elseif value_analysis = "A1 (STR)" Then
+            ElseIf value_analysis = "A1 (STR)" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.5)
-            Elseif value_analysis = "A2" Then
+            ElseIf value_analysis = "A2" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.3)
             End If
     
@@ -174,9 +174,9 @@ Function getGamma(ByVal norma As String, ByVal stateLimit As String, ByVal load_
     
             If value_analysis = "EQU" Then
                 gamma = IIf(value_condition = "Favorevole", 0.9, 1.1)
-            Elseif value_analysis = "A1 (STR)" Then
+            ElseIf value_analysis = "A1 (STR)" Then
                 gamma = IIf(value_condition = "Favorevole", 1, 1.3)
-            Elseif value_analysis = "A2" Then
+            ElseIf value_analysis = "A2" Then
                 gamma = IIf(value_condition = "Favorevole", 1, 1)
             End If
     
@@ -184,9 +184,9 @@ Function getGamma(ByVal norma As String, ByVal stateLimit As String, ByVal load_
     
             If value_analysis = "EQU" Then
                 gamma = IIf(value_condition = "Favorevole", 0.8, 1.5)
-            Elseif value_analysis = "A1 (STR)" Then
+            ElseIf value_analysis = "A1 (STR)" Then
                 gamma = IIf(value_condition = "Favorevole", 0.8, 1.5)
-            Elseif value_analysis = "A2" Then
+            ElseIf value_analysis = "A2" Then
                 gamma = IIf(value_condition = "Favorevole", 0.8, 1.3)
             End If
     
@@ -194,15 +194,15 @@ Function getGamma(ByVal norma As String, ByVal stateLimit As String, ByVal load_
     
             If value_analysis = "EQU" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.5)
-            Elseif value_analysis = "A1 (STR)" Then
+            ElseIf value_analysis = "A1 (STR)" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.5)
-            Elseif value_analysis = "A2" Then
+            ElseIf value_analysis = "A2" Then
                 gamma = IIf(value_condition = "Favorevole", 0, 1.3)
             End If
     
         End If
 
-    end if
+    End If
 
     ' debug.print norma, stateLimit, value_analysis, value_condition, "gamma = " & Cstr(gamma)
     getGamma = gamma
@@ -213,7 +213,7 @@ Function getPsi(ByVal norma As String, ByVal stateLimit As String, ByVal num_psi
 
     Dim Index_cat As Integer
     Dim array_cat() As Variant
-    Dim psi as Double
+    Dim psi As Double
     Dim psi_0_ntc08 As Variant, psi_1_ntc08 As Variant, psi_2_ntc08 As Variant
     Dim psi_0_ntc18 As Variant, psi_1_ntc18 As Variant, psi_2_ntc18 As Variant
 
@@ -222,10 +222,10 @@ Function getPsi(ByVal norma As String, ByVal stateLimit As String, ByVal num_psi
     psi_0_ntc18 = Array(0.7, 0.7, 0.7, 0.7, 1, 0.7, 0.7, 0, Null, Null, 0.6, 0.5, 0.7, 0.6)
     psi_1_ntc08 = Array(0.5, 0.5, 0.7, 0.7, 0.9, 0.7, 0.5, 0, Null, Null, 0.2, 0.2, 0.5, 0.5)
     psi_1_ntc18 = Array(0.5, 0.5, 0.7, 0.7, 0.9, 0.7, 0.5, 0, Null, Null, 0.2, 0.2, 0.5, 0.5)
-    psi_2_ntc08 = Array(0., 0., 0.6, 0.6, 0.8, 0.6, 0., 0, Null, Null, 0, 0, 0.2, 0)
-    psi_2_ntc18 = Array(0., 0., 0.6, 0.6, 0.8, 0.6, 0., 0, Null, Null, 0, 0, 0.2, 0)
+    psi_2_ntc08 = Array(0#, 0#, 0.6, 0.6, 0.8, 0.6, 0#, 0, Null, Null, 0, 0, 0.2, 0)
+    psi_2_ntc18 = Array(0#, 0#, 0.6, 0.6, 0.8, 0.6, 0#, 0, Null, Null, 0, 0, 0.2, 0)
 
-    For i = 0 To UBound(array_cat) 
+    For i = 0 To UBound(array_cat)
 
         If array_cat(i) = value_category Then
             Index_cat = i
@@ -264,9 +264,9 @@ Function getPsi(ByVal norma As String, ByVal stateLimit As String, ByVal num_psi
 
 End Function
 '================================================================================================================================
-Function udm_force(ByVal unit As String) as Double
+Function udm_force(ByVal unit As String) As Double
 
-    select Case unit
+    Select Case unit
 
         Case "QN", "anti-qN"
             udm_force = 10 ^ 30
@@ -295,7 +295,7 @@ Function udm_force(ByVal unit As String) as Double
         Case "-", "anti--", "N", "anti-N"
             udm_force = 1
         Case "dN", "anti-daN"
-            udm_force = 10 ^ -1       
+            udm_force = 10 ^ -1
         Case "cN", "anti-hN"
             udm_force = 10 ^ -2
         Case "mN", "anti-kN"
@@ -319,18 +319,18 @@ Function udm_force(ByVal unit As String) as Double
         Case "qN", "anti-QN"
             udm_force = 10 ^ -30
 
-    end select
+    End Select
 
 End Function
 '================================================================================================================================
-Function udm_meter(ByVal unit As String) as Double
+Function udm_meter(ByVal unit As String) As Double
 
     Dim exponent As Integer
     Dim exponentString As String
-    exponent = IIf(isNumeric(Right(unit, 1)), Right(unit, 1), 1)
-    exponentString = IIf(isNumeric(Right(unit, 1)), Right(unit, 1), "")
+    exponent = IIf(IsNumeric(Right(unit, 1)), Right(unit, 1), 1)
+    exponentString = IIf(IsNumeric(Right(unit, 1)), Right(unit, 1), "")
     
-    select Case unit
+    Select Case unit
 
         Case "Qm" & exponentString, "anti-qm" & exponentString
             udm_meter = (10 ^ 30) ^ exponent
@@ -347,19 +347,19 @@ Function udm_meter(ByVal unit As String) as Double
         Case "Tm" & exponentString, "anti-pm" & exponentString
             udm_meter = (10 ^ 12) ^ exponent
         Case "Gm" & exponentString, "anti-nm" & exponentString
-            udm_meter = (10 ^ 9) ^ exponent         
+            udm_meter = (10 ^ 9) ^ exponent
         Case "Mm" & exponentString, "anti-mmN" & exponentString
-            udm_meter = (10 ^ 6) ^ exponent     
+            udm_meter = (10 ^ 6) ^ exponent
         Case "km" & exponentString, "anti-mm" & exponentString
-            udm_meter = (10 ^ 3) ^ exponent      
+            udm_meter = (10 ^ 3) ^ exponent
         Case "hm" & exponentString, "anti-cm" & exponentString
-            udm_meter = (10 ^ 2) ^ exponent       
+            udm_meter = (10 ^ 2) ^ exponent
         Case "dam" & exponentString, "anti-dm" & exponentString
-            udm_meter = (10 ^ 1) ^ exponent       
-        Case "-", "anti--", "m" & exponentString, "anti-m" & exponentString            
+            udm_meter = (10 ^ 1) ^ exponent
+        Case "-", "anti--", "m" & exponentString, "anti-m" & exponentString
             udm_meter = 1
         Case "dm" & exponentString, "anti-dmN" & exponentString
-            udm_meter = (10 ^ -1) ^ exponent      
+            udm_meter = (10 ^ -1) ^ exponent
         Case "cm" & exponentString, "anti-hm" & exponentString
             udm_meter = (10 ^ -2) ^ exponent
         Case "mm" & exponentString, "anti-km" & exponentString
@@ -383,26 +383,26 @@ Function udm_meter(ByVal unit As String) as Double
         Case "qm" & exponentString, "anti-Qm" & exponentString
             udm_meter = (10 ^ -30) ^ exponent
 
-    end select
+    End Select
 
 End Function
 '================================================================================================================================
-Function udm() as Double
+Function udm() As Double
 
-    Dim ws as Worksheet
+    Dim ws As Worksheet
     Set ws = Application.ThisWorkbook.ActiveSheet
 
-    Dim UDM1 as Double, UDM2 as Double, UDM3 as Double, UDMValue as Double
-    Dim antiUDM1 as Double, antiUDM2 as Double, antiUDM3 as Double, antiUDMValue as Double
+    Dim UDM1 As Double, UDM2 As Double, UDM3 As Double, UDMValue As Double
+    Dim antiUDM1 As Double, antiUDM2 As Double, antiUDM3 As Double, antiUDMValue As Double
 
-    UDM1 = udm_force(ws.range("A6").value)
-    UDM2 = udm_meter(ws.range("B6").value)
-    UDM3 = udm_meter(ws.range("A7").value)
+    UDM1 = udm_force(ws.Range("A6").Value)
+    UDM2 = udm_meter(ws.Range("B6").Value)
+    UDM3 = udm_meter(ws.Range("A7").Value)
     UDMValue = UDM1 * UDM2 / UDM3
 
-    antiUDM1 = udm_force("anti-" & ws.range("A9").value)
-    antiUDM2 = udm_meter("anti-" & ws.range("B9").value)
-    antiUDM3 = udm_meter("anti-" & ws.range("A10").value)
+    antiUDM1 = udm_force("anti-" & ws.Range("A9").Value)
+    antiUDM2 = udm_meter("anti-" & ws.Range("B9").Value)
+    antiUDM3 = udm_meter("anti-" & ws.Range("A10").Value)
     antiUDMValue = antiUDM1 * antiUDM2 / antiUDM3
 
     udm = UDMValue * antiUDMValue
@@ -484,10 +484,10 @@ Function cells_style(ByVal col_Name As String, ByRef col_Range As Range)
                     .TintAndShade = 0.799981688894314
                     .PatternTintAndShade = 0
                 End With
-                if col_Name = "q - NTC08" Or col_Name = "q - NTC18" then
-                    decNum = ws.range("A12").Value  
-                    .NumberFormat = "0" & IIF(decNum <> 0,".","") & String(decNum, "0")
-                end if
+                If col_Name = "q - NTC08" Or col_Name = "q - NTC18" Then
+                    decNum = ws.Range("A12").Value
+                    .NumberFormat = "0" & IIf(decNum <> 0, ".", "") & String(decNum, "0")
+                End If
             End With
             mergeCells = True
 
@@ -536,7 +536,7 @@ Function cells_valid(ByVal col_Name As String, ByRef col_Range As Range)
     Dim wsUtils As Worksheet
     Set wsUtils = Application.ThisWorkbook.Worksheets("Utils")
     
-    DIm start_valid As String
+    Dim start_valid As String
     Dim array_valid As Range
 
     Select Case col_Name
@@ -575,7 +575,7 @@ End Function
 Function reset(ByVal button_clicked As String)
 
     Dim ws As Worksheet
-    Dim j As Integer, incrCol as Integer
+    Dim j As Integer, incrCol As Integer
     Dim current_cell As Range
     Dim isDash As Boolean
     Dim start_row As Long, start_col As Long, last_col As Long, tot As Long
@@ -610,7 +610,7 @@ Function reset(ByVal button_clicked As String)
         incrCol = IIf(button_clicked = "Resetta Qk", 2, 0)
 
         '-- COLONNA DESCRIZIONE ------------------------------------------------------------------------------------
-            Set current_cell =  ws.Range(ws.Cells(start_row + 4, start_col + 1), ws.Cells(start_row + 4, start_col + 3))
+            Set current_cell = ws.Range(ws.Cells(start_row + 4, start_col + 1), ws.Cells(start_row + 4, start_col + 3))
             cells_style "Descrizione", current_cell
         '
         '-- COLONNA CORRELAZIONE -----------------------------------------------------------------------------------
@@ -649,7 +649,7 @@ Function reset(ByVal button_clicked As String)
         '
         '-- COLONNA STATO ------------------------------------------------------------------------------------------
             If button_clicked = "Resetta Qk" Then
-                Set current_cell = ws.Range(ws.Cells(start_row + 4, start_col + 14), ws.Cells(start_row + 4, start_col + 15))      
+                Set current_cell = ws.Range(ws.Cells(start_row + 4, start_col + 14), ws.Cells(start_row + 4, start_col + 15))
             Else
                 Set current_cell = ws.Range(ws.Cells(start_row + 4, start_col + 9), ws.Cells(start_row + 4, start_col + 10))
             End If
@@ -663,25 +663,25 @@ Function reset(ByVal button_clicked As String)
 
         '-- COLONNA CARICHI VARIABILI PRINCIPALI -------------------------------------------------------------------
             If button_clicked <> "Resetta SLE Q.P." Then
-                Set current_cell = ws.range(ws.Cells(start_row + 4, start_col + 1), ws.Cells(start_row + 4, start_col + 3))
+                Set current_cell = ws.Range(ws.Cells(start_row + 4, start_col + 1), ws.Cells(start_row + 4, start_col + 3))
                 cells_style "Carichi variabili principali", current_cell
                 current_cell.Value = "-"
             End If
         '
         '-- COLONNA ANNESSE CATEGORIE PRINCIPALI -------------------------------------------------------------------
             If button_clicked <> "Resetta SLE Q.P." Then
-                Set current_cell = ws.range(ws.Cells(start_row + 4, start_col + 4), ws.Cells(start_row + 4, start_col + 6))
+                Set current_cell = ws.Range(ws.Cells(start_row + 4, start_col + 4), ws.Cells(start_row + 4, start_col + 6))
                 cells_style "Annesse categorie principali", current_cell
                 current_cell.Value = "-"
             End If
         '
         '-- COLONNA q - NTC08 --------------------------------------------------------------------------------------
-            Set current_cell = ws.range(ws.Cells(start_row + 4, start_col + 7 + incrCol), ws.Cells(start_row + 4, start_col + 8 + incrCol))
+            Set current_cell = ws.Range(ws.Cells(start_row + 4, start_col + 7 + incrCol), ws.Cells(start_row + 4, start_col + 8 + incrCol))
             cells_style "q - NTC08", current_cell
             current_cell.Value = "-"
         '
         '-- COLONNA q - NTC18 --------------------------------------------------------------------------------------
-            Set current_cell = ws.range(ws.Cells(start_row + 4, start_col + 9 + incrCol), ws.Cells(start_row + 4, start_col + 10 + incrCol))
+            Set current_cell = ws.Range(ws.Cells(start_row + 4, start_col + 9 + incrCol), ws.Cells(start_row + 4, start_col + 10 + incrCol))
             cells_style "q - NTC18", current_cell
             current_cell.Value = "-"
         '
@@ -689,93 +689,93 @@ Function reset(ByVal button_clicked As String)
     
 End Function
 '================================================================================================================================
-Function getQkPrincArray(ByVal norma as String, ByVal numPsi as Variant, ByVal stateLimit as String, ByVal blockName as String, ByVal tot as Variant, ByRef rangeNum as Range, ByRef rangeCorr as Range, ByRef rangeQinput as Range, ByRef rangeCondition as Range, ByRef rangeAnalysis as Range, ByRef rangeCategory as Range, ByRef rangeState as Range, Optional QkOrCatOrNum as String = "getQkPrinc") as Variant
+Function getQkPrincArray(ByVal norma As String, ByVal numPsi As Variant, ByVal stateLimit As String, ByVal blockName As String, ByVal tot As Variant, ByRef rangeNum As Range, ByRef rangeCorr As Range, ByRef rangeQinput As Range, ByRef rangeCondition As Range, ByRef rangeAnalysis As Range, ByRef rangeCategory As Range, ByRef rangeState As Range, Optional QkOrCatOrNum As String = "getQkPrinc") As Variant
 
-    Dim j as Long
-    Dim Qd as Double
-    Dim dictQkPrinc As Object, dictQkPrincCategory as Object
+    Dim j As Long
+    Dim Qd As Double
+    Dim dictQkPrinc As Object, dictQkPrincCategory As Object
     Set dictQkPrinc = CreateObject("Scripting.Dictionary")
     Set dictQkPrincCategory = CreateObject("Scripting.Dictionary")
     Set dictQkPrincNum = CreateObject("Scripting.Dictionary")
 
     j = 1
-    For i = 1 to tot
+    For i = 1 To tot
 
-        state = rangeState(i,1).value
-        If state = "Attivo" then
+        state = rangeState(i, 1).Value
+        If state = "Attivo" Then
 
-            num = rangeNum(i,1).value
-            correlation = rangeCorr(i,1).value
-            Qinput = IIf(IsEmpty(rangeQinput(i,1).value) Or Not IsNumeric(rangeQinput(i,1).value), 0, rangeQinput(i,1).value)
-            condition = rangeCondition(i,1).value
-            analysis = rangeAnalysis(i,1).value
-            category = rangeCategory(i,1).value
+            num = rangeNum(i, 1).Value
+            correlation = rangeCorr(i, 1).Value
+            Qinput = IIf(IsEmpty(rangeQinput(i, 1).Value) Or Not IsNumeric(rangeQinput(i, 1).Value), 0, rangeQinput(i, 1).Value)
+            condition = rangeCondition(i, 1).Value
+            analysis = rangeAnalysis(i, 1).Value
+            category = rangeCategory(i, 1).Value
 
-            Qd = Qinput*getGamma(norma, stateLimit, blockName, condition, analysis)*getPsi(norma, stateLimit, numPsi, category)
+            Qd = Qinput * getGamma(norma, stateLimit, blockName, condition, analysis) * getPsi(norma, stateLimit, numPsi, category)
             ' Debug.Print "Qd = Qinput * gamma * Psi = " & Qinput & " * " & getGamma(norma, stateLimit, blockName, condition, analysis) & " * " getPsi(norma, stateLimit, numPsi, category) & " = " & Qd
 
-            if IsEmpty(correlation) then
-                dictQkPrinc.Add "CorrVoid" & Cstr(j), Qd
-                dictQkPrincCategory.Add "CorrVoid" & Cstr(j), category
-                dictQkPrincNum.Add "CorrVoid" & Cstr(j), num
+            If IsEmpty(correlation) Then
+                dictQkPrinc.Add "CorrVoid" & CStr(j), Qd
+                dictQkPrincCategory.Add "CorrVoid" & CStr(j), category
+                dictQkPrincNum.Add "CorrVoid" & CStr(j), num
                 j = j + 1
-            elseIf Not dictQkPrinc.Exists(correlation) Then
+            ElseIf Not dictQkPrinc.Exists(correlation) Then
                 dictQkPrinc.Add correlation, Qd
                 dictQkPrincCategory.Add correlation, category
                 dictQkPrincNum.Add correlation, num
-            else
+            Else
                 dictQkPrinc(correlation) = dictQkPrinc(correlation) + Qd
                 dictQkPrincCategory(correlation) = dictQkPrincCategory(correlation) & ", " & category
                 dictQkPrincNum(correlation) = dictQkPrincNum(correlation) & ", " & num
             End If
 
         End If
-    next
+    Next
 
-    if QkOrCatOrNum = "getQkPrinc" then
-        getQkPrincArray = IIf(dictQkPrinc.Count = 0, Array(0), dictQkPrinc.Items) 
-    elseif QkOrCatOrNum = "getQkPrincCategory" then
-        getQkPrincArray = IIf(dictQkPrincCategory.Count = 0, Array("-"), dictQkPrincCategory.Items) 
-    elseif QkOrCatOrNum = "getQkPrincNum" then
-        getQkPrincArray = IIf(dictQkPrincNum.Count = 0, Array("-"), dictQkPrincNum.Items) 
-    end if
+    If QkOrCatOrNum = "getQkPrinc" Then
+        getQkPrincArray = IIf(dictQkPrinc.Count = 0, Array(0), dictQkPrinc.Items)
+    ElseIf QkOrCatOrNum = "getQkPrincCategory" Then
+        getQkPrincArray = IIf(dictQkPrincCategory.Count = 0, Array("-"), dictQkPrincCategory.Items)
+    ElseIf QkOrCatOrNum = "getQkPrincNum" Then
+        getQkPrincArray = IIf(dictQkPrincNum.Count = 0, Array("-"), dictQkPrincNum.Items)
+    End If
 
 End Function
 '================================================================================================================================
-Function getQkSeconArray(ByVal norma as String, ByVal numPsi as Variant, ByVal stateLimit as String, ByVal blockName as String, ByVal tot as Variant, ByRef rangeCorr as Range, ByRef rangeQinput as Range, ByRef rangeCondition as Range, ByRef rangeAnalysis as Range, ByRef rangeCategory as Range, ByRef rangeState as Range) as Variant
+Function getQkSeconArray(ByVal norma As String, ByVal numPsi As Variant, ByVal stateLimit As String, ByVal blockName As String, ByVal tot As Variant, ByRef rangeCorr As Range, ByRef rangeQinput As Range, ByRef rangeCondition As Range, ByRef rangeAnalysis As Range, ByRef rangeCategory As Range, ByRef rangeState As Range) As Variant
 
-    Dim j as Long
-    Dim Qd as Double
+    Dim j As Long
+    Dim Qd As Double
     Dim dictQkSecon As Object
     Set dictQkSecon = CreateObject("Scripting.Dictionary")
 
     j = 1
-    For i = 1 to tot
+    For i = 1 To tot
 
-        state = rangeState(i,1).value
-        If state = "Attivo" then
+        state = rangeState(i, 1).Value
+        If state = "Attivo" Then
 
-            correlation = rangeCorr(i,1).value
-            Qinput = IIf(IsEmpty(rangeQinput(i,1).value) Or Not IsNumeric(rangeQinput(i,1).value), 0, rangeQinput(i,1).value)
-            condition = rangeCondition(i,1).value
-            analysis = rangeAnalysis(i,1).value
-            category = rangeCategory(i,1).value
+            correlation = rangeCorr(i, 1).Value
+            Qinput = IIf(IsEmpty(rangeQinput(i, 1).Value) Or Not IsNumeric(rangeQinput(i, 1).Value), 0, rangeQinput(i, 1).Value)
+            condition = rangeCondition(i, 1).Value
+            analysis = rangeAnalysis(i, 1).Value
+            category = rangeCategory(i, 1).Value
 
-            Qd = Qinput*getGamma(norma, stateLimit, blockName, condition, analysis)*getPsi(norma, stateLimit, numPsi, category)
+            Qd = Qinput * getGamma(norma, stateLimit, blockName, condition, analysis) * getPsi(norma, stateLimit, numPsi, category)
             ' Debug.Print "Qd = Qinput * gamma * Psi = " & Qinput & " * " & getGamma(norma, stateLimit, blockName, condition, analysis) & " * " getPsi(norma, stateLimit, numPsi, category) & " = " & Qd
 
-            if IsEmpty(correlation) then
-                dictQkSecon.Add "CorrVoid" & Cstr(j), Qd
+            If IsEmpty(correlation) Then
+                dictQkSecon.Add "CorrVoid" & CStr(j), Qd
                 j = j + 1
-            elseIf Not dictQkSecon.Exists(correlation) Then
+            ElseIf Not dictQkSecon.Exists(correlation) Then
                 dictQkSecon.Add correlation, Qd
-            else
+            Else
                 dictQkSecon(correlation) = dictQkSecon(correlation) + Qd
             End If
 
-        End IF
-    next
+        End If
+    Next
 
-    getQkSeconArray = IIf(dictQkSecon.Count = 0, Array(0), dictQkSecon.Items) 
+    getQkSeconArray = IIf(dictQkSecon.Count = 0, Array(0), dictQkSecon.Items)
 
 End Function

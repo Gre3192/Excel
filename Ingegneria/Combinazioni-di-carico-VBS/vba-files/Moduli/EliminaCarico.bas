@@ -107,7 +107,7 @@ Sub elimina_carico()
     '
     '-- COLONNA STATO ------------------------------------------------------------------------------------------
         If button_clicked = "Elimina Qk" Then
-            Set current_cell = ws.Range(ws.Cells(start_row + 3 + tot, start_col + 14), ws.Cells(start_row + 3 + tot, start_col + 15))      
+            Set current_cell = ws.Range(ws.Cells(start_row + 3 + tot, start_col + 14), ws.Cells(start_row + 3 + tot, start_col + 15))
         Else
             Set current_cell = ws.Range(ws.Cells(start_row + 3 + tot, start_col + 9), ws.Cells(start_row + 3 + tot, start_col + 10))
         End If
