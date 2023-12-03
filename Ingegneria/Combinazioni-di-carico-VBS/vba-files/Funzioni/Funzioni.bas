@@ -84,6 +84,40 @@ Function getBlockName(ByVal button_clicked As String) As String
     
 End Function
 '================================================================================================================================
+Function getGLobalControl(byVal cellName As String) As String
+
+    Dim ws as Worksheet
+    Set ws = Application.ThisWorkbook.ActiveSheet
+    
+    Dim outputCell as String
+
+    Select Case cellName
+
+        Case "UDM input force"
+            outputCell = ws.Range("A6").value
+        Case "UDM input meter UP" 
+            outputCell = ws.Range("B6").value
+        Case "UDM input meter BOTTOM"
+            outputCell = ws.Range("A7").value
+        Case "UDM output force"
+            outputCell = ws.Range("A9").value
+        Case "UDM output meter UP" 
+            outputCell = ws.Range("B9").value
+        Case "UDM output meter BOTTOM"
+            outputCell = ws.Range("A10").value
+        Case "Cifre Decimali"
+            outputCell = ws.Range("A12").value
+        Case "Analisi"
+            outputCell = ws.Range("A15").value
+        Case "Correlazione sismica"
+            outputCell = ws.Range("A18").value
+
+    End Select
+
+    getGLobalControl = outputCell
+
+End Function
+'================================================================================================================================
 Function isInputZone(ByVal button_clicked As String) As Boolean
 
     Select Case button_clicked
@@ -395,14 +429,14 @@ Function udm() As Double
     Dim UDM1 As Double, UDM2 As Double, UDM3 As Double, UDMValue As Double
     Dim antiUDM1 As Double, antiUDM2 As Double, antiUDM3 As Double, antiUDMValue As Double
 
-    UDM1 = udm_force(ws.Range("A6").Value)
-    UDM2 = udm_meter(ws.Range("B6").Value)
-    UDM3 = udm_meter(ws.Range("A7").Value)
+    UDM1 = udm_force(getGLobalControl("UDM input force"))
+    UDM2 = udm_meter(getGLobalControl("UDM input meter UP"))
+    UDM3 = udm_meter(getGLobalControl("UDM input meter BOTTOM"))
     UDMValue = UDM1 * UDM2 / UDM3
 
-    antiUDM1 = udm_force("anti-" & ws.Range("A9").Value)
-    antiUDM2 = udm_meter("anti-" & ws.Range("B9").Value)
-    antiUDM3 = udm_meter("anti-" & ws.Range("A10").Value)
+    antiUDM1 = udm_force("anti-" & getGLobalControl("UDM output force"))
+    antiUDM2 = udm_meter("anti-" & getGLobalControl("UDM output meter UP"))
+    antiUDM3 = udm_meter("anti-" & getGLobalControl("UDM output meter BOTTOM"))
     antiUDMValue = antiUDM1 * antiUDM2 / antiUDM3
 
     udm = UDMValue * antiUDMValue
@@ -485,7 +519,7 @@ Function cells_style(ByVal col_Name As String, ByRef col_Range As Range)
                     .PatternTintAndShade = 0
                 End With
                 If col_Name = "q - NTC08" Or col_Name = "q - NTC18" Then
-                    decNum = ws.Range("A12").Value
+                    decNum = getGLobalControl("Cifre Decimali")
                     .NumberFormat = "0" & IIf(decNum <> 0, ".", "") & String(decNum, "0")
                 End If
             End With
@@ -545,7 +579,7 @@ Function cells_valid(ByVal col_Name As String, ByRef col_Range As Range)
             start_valid = "Sfavorevole"
         Case "Analisi"
             Set array_valid = wsUtils.Range("E4:E17")
-            start_valid = Application.ThisWorkbook.Worksheets("Combinazioni").Range("A15").Value
+            start_valid = getGLobalControl("Analisi")
         Case "Categoria"
             Set array_valid = wsUtils.Range("F4:F17")
             start_valid = "A"
@@ -779,3 +813,5 @@ Function getQkSeconArray(ByVal norma As String, ByVal numPsi As Variant, ByVal s
     getQkSeconArray = IIf(dictQkSecon.Count = 0, Array(0), dictQkSecon.Items)
 
 End Function
+
+    
